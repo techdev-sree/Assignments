@@ -1,0 +1,29 @@
+.toast {
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+    pointer-events: all;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 1rem;
+    background: #efefef;
+}
+
+.portal {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+.toastContainer {
+    margin: 10px;
+}
