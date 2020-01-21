@@ -18,7 +18,7 @@ class Toast extends Component {
     startTimer = () => {
         if (!this.state.timer) {
             const timer = setTimeout(() => {
-                this.onClose();
+                //   this.onClose();
             }, this.props.timeout);
 
             this.setState({
@@ -43,7 +43,7 @@ class Toast extends Component {
             <div class={styles.toast} onMouseEnter={() => {
                 this.endTimer();
             }} onMouseLeave={this.startTimer}>
-                <div onClick={this.onClose}>X</div>
+                <button onClick={this.onClose}>CLOSE</button>
                 <div>
                     <div>
                         {message}

@@ -7,10 +7,11 @@
     align-items: center;
     margin: 1rem 0;
     pointer-events: all;
-    border: 1px solid grey;
+    box-shadow: 0px 0px 1px;
     border-radius: 5px;
     padding: 1rem;
-    background: #efefef;
+    background: #ffffff;
+    font-size: 1.6rem;
 }
 
 .portal {
@@ -26,4 +27,12 @@
 
 .toastContainer {
     margin: 10px;
+}
+
+:global {
+
+html {
+    font-size: 10px;
+}
+
 }

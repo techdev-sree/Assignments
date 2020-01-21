@@ -3,7 +3,7 @@ import { Toaster } from '../Toast/ToastContainer';
 import { sayHello } from '../utils/utils';
 import styles from './styles.modules.scss';
 
-const toaster1 = Toaster.createPortal('toaster-1');
+//const toaster1 = Toaster.createPortal('toaster-1');
 
 //const toaster2 = Toaster.createPortal('toaster-2');
 
@@ -21,7 +21,7 @@ class MyComponent extends Component {
     }
 
     handleToasts1 = () => {
-        toaster1.show({ message: `This is a Toast ${Date.now()}` });
+        this.toaster.show({ message: `This is a Toast ${Date.now()}` });
     };
     handleToasts2 = () => {
         // toaster2.show({ message: `This is a Toast ${Date.now()}` });
@@ -34,6 +34,9 @@ class MyComponent extends Component {
                 <button onClick={this.handleToasts1}>
                     Show Toast 1
                 </button>
+                <Toaster ref={(ref) => {
+                    this.toaster = ref;
+                }}/>
             </div>
         );
     }

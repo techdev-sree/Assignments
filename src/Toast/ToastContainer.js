@@ -10,24 +10,26 @@ class Toaster extends Component {
         this.state = {
             toasts: {}
         };
+        this.el = document.createElement('div');
+        document.body.appendChild(this.el);
     }
 
-    static createContainer = () => {
-        const ele = document.createElement('div');
-        ele.classList.add(styles.portal);
-        document.body.appendChild(ele);
-        Toaster.toaster = ele;
-    };
+    /*  static createContainer = () => {
+          const ele = document.createElement('div');
+          ele.classList.add(styles.portal);
+          document.body.appendChild(ele);
+          Toaster.toaster = ele;
+      };
 
-    static createPortal = (className) => {
-        if (!Toaster.toaster) {
-            Toaster.createContainer();
-        }
-        const ele = document.createElement('div');
-        ele.classList.add(styles.toastContainer, styles[className]);
-        Toaster.toaster.appendChild(ele);
-        return ReactDOM.render(<Toaster/>, ele);
-    };
+      static createPortal = (className) => {
+          if (!Toaster.toaster) {
+              Toaster.createContainer();
+          }
+          const ele = document.createElement('div');
+          ele.classList.add(styles.toastContainer, styles[className]);
+          Toaster.toaster.appendChild(ele);
+          return ReactDOM.render(<Toaster/>, ele);
+      };*/
 
     show = (messageObj) => {
         const key = Date.now();
@@ -47,19 +49,22 @@ class Toaster extends Component {
 
 
     render() {
-        return (
-            <div className={''}>
-                {Object.keys(this.state.toasts).map((key) => {
-                    const obj = this.state.toasts[key];
-                    return (
-                        <Toast obj={obj} key={obj.key} onClose={() => {
-                            this.clear(obj.key);
-                        }}/>
-                    );
-                })}
+        return ReactDOM.createPortal(
+            <div className={styles.portal}>
+                <div className={styles.toastContainer}>
+                    {Object.keys(this.state.toasts).map((key) => {
+                        const obj = this.state.toasts[key];
+                        return (
+                            <Toast obj={obj} key={obj.key} onClose={() => {
+                                this.clear(obj.key);
+                            }}/>
+                        );
+                    })}
+                </div>
             </div>
+            , this.el
         );
-    };
+    }
 }
 
 Toaster.propTypes = {};
